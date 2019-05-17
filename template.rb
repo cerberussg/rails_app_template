@@ -18,8 +18,6 @@ rails_command('generate devise User')
 environment 'config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }', env: 'development'
 environment 'config.action_mailer.default_url_options = { host: 'https://example.com', port: 3000 }', env: 'production'
 
-file './.env'
-
 # file 'config/initializer/rubypythmore.rb', <<-CODE
 initializer 'rubypythmore.rb', <<-CODE
   # something 1
