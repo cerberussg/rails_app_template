@@ -37,7 +37,7 @@ if yes?('Create another initializer?')
   # yes
 end
 
-route 'root to: users#index'
+route "root  'users#index'"
 
 after_bundle do
   git :init
