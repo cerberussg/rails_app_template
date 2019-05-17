@@ -23,6 +23,11 @@ file './.env', <<-CODE
   DB_PASSWORD=
 CODE
 
+insert_into_file './.gitignore', after: "# Ignore uploaded files in development.\n" do <<-RUBY
+/.env
+RUBY
+end
+
 # file 'config/initializer/rubypythmore.rb', <<-CODE
 initializer 'rubypythmore.rb', <<-CODE
   # something 1
