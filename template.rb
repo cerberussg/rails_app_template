@@ -1,30 +1,35 @@
-# rails new myapp -m template.rb
+# rails new myapp -m template.rb -> within the templates directory
+# rails new myapp -m https://raw.github.com/cerberussg/rails_app_template/master/template.rb -> utilizing the github repo
+# rails new myapp -> via ~/.railsrc file
 
-gem 'devise'
+gem "devise"
+gem "dotenv-rails"
 gem_group :development, :test do
-  gem 'rspec-rails'
+  gem "rspec-rails"
 end
 
-run 'bundle install'
+run "bundle install"
 
-generate(:scaffold, 'user', 'first_name', 'last_name')
+generate(:scaffold, "user", "first_name", "last_name")
 
-rails_command('generate devise:install')
-rails_command('generate devise User')
+rails_command("generate devise:install")
+rails_command("generate devise User")
 
-environment 'config.action_mail.default_url_options = { host: "localhost", port: 3000 }', env: 'development'
-environment 'config.action_mailer.default_url_options = { host: "https://example.com", port: 3000 }', env: 'production'
+environment "config.action_mailer.default_url_options = { host: "localhost", port: 3000 }", env: "development"
+environment "config.action_mailer.default_url_options = { host: "https://example.com", port: 3000 }", env: "production"
 
-# file 'config/initializer/rubypythmore.rb', <<-CODE
-initializer 'rubypythmore.rb', <<-CODE
+file "./.env"
+
+# file "config/initializer/rubypythmore.rb", <<-CODE
+initializer "rubypythmore.rb", <<-CODE
   # something 1
   # something 2
   # something 3
 CODE
 
-if yes?('Create another initializer?')
-  init_name = ask('What do you want to call the initializer?')
-  init_name << '.rb' unless init_name.index('.rb')
+if yes?("Create another initializer?")
+  init_name = ask("What do you want to call the initializer?")
+  init_name << ".rb" unless init_name.index(".rb")
   initializer init_name, <<-CODE
     # something
   CODE
@@ -36,6 +41,6 @@ route "root to: users#index"
 
 after_bundle do
   git :init
-  git add: '.'
-  git commit: %( -m 'Initial commit')
+  git add: "."
+  git commit: %( -m "Initial commit")
 end
